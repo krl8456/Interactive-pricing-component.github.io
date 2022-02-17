@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+
   <title>Frontend Mentor | Interactive pricing component</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -15,26 +20,41 @@
   </style>
 </head>
 <body>
+  <div id="container">
+  <header id="main-header">
+    <h1>Simple, traffic-based pricing</h1>
+    <h2>Sign-up for our 30-day trial. No credit card required.</h2>
+  </header>
+ 
+  <main id="main-content">
+  <h3>Pageviews</h3>
+  <input type="range" min="8" max="36" id="range" value="16" step="4">
+  <div class="price"><span class="dollar">$</span> <span class="per">/month</span></div>
 
-  Simple, traffic-based pricing
-  Sign-up for our 30-day trial. No credit card required. 
-
-  Pageviews
-  $ /month
-
-  Monthly Billing
-  Yearly Billing 25% discount
-
-  Unlimited websites
-  100% data ownership
-  Email reports
-
-  Start my trial
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+  <div class="billing">
+    Monthly Billing
+    <form action="" class="toogle-form" method="get">
+      <label class="toogle">
+        <input type="checkbox" name="toogle" value="billing" class="toogle-checkbox">
+        <div class="toogle-background"></div>
+      </label>
+    </form>
+    Yearly Billing <div class="percentage">-25%</div> <span class="discount">discount</span>
   </div>
+  <div class="assurances">
+    <div class="single-assurance"><img src="images/icon-check.svg" alt="green check tick" class="check-tick">Unlimited websites</div>
+    <div class="single-assurance"><img src="images/icon-check.svg" alt="green check tick" class="check-tick">100% data ownership</div>
+    <div class="single-assurance"><img src="images/icon-check.svg" alt="green check tick" class="check-tick">Email reports</div>
+  </div>
+ 
+
+  <button class="start-trial-button">Start my trial</button>
+</main>
+  <footer>
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">krl8456</a>.
+  </footer>
+</div>
 </body>
 <script src="scripts.js"></script>
 </html>

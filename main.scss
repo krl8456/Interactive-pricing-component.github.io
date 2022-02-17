@@ -1,0 +1,183 @@
+$soft-cyan: hsl(174, 77%, 80%);
+$strong-cyan: hsl(174, 86%, 45%);
+$very-strong-cyan: hsl(174, 80%, 28%);
+$light-grayish-red: hsl(14, 92%, 95%);
+$light-red: hsl(15, 100%, 70%);
+$pale-blue: hsl(226, 100%, 87%);
+$white: hsl(0, 0%, 100%);
+$very-pale-blue: hsl(230, 100%, 99%);
+$light-grayish-blue-empty: hsl(224, 65%, 95%);
+$light-grayish-blue-toogle: hsl(223, 50%, 87%);
+$grayish-blue: hsl(225, 20%, 60%);
+$dark-desaturated-blue: hsl(227, 35%, 25%);
+$font-size: 15px;
+$translucent-light-red:hsla(15, 100%, 70%, 0.596);
+
+@mixin centering ($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+html, body, h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    @include centering(column);
+    font-size: $font-size;
+    font-family: 'Manrope', sans-serif;
+    background: url('images/pattern-circles.svg') no-repeat center 5em;
+}
+#main-header {
+    @include centering(column);
+    margin-top: 6em;
+}
+h1 {
+  font-size: clamp(1em, 3vw, 1.3em);
+}
+h2, h3 {
+    font-size: clamp(0.7em, 2vw, 1em);
+    color: $grayish-blue;
+}
+h3 {
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 1em;
+    text-transform:uppercase;
+}
+main {
+    background: $white;
+    border-radius: 0.5em;
+    @include centering(column);
+    width: 100%;
+    margin-top: 7em;
+    box-shadow: 0px 12px 18px 1px rgba(0,0,0,0.37);
+}
+input[type=range] {
+    height: 45px;
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 80%;
+  }
+  // input[type=range]:focus {
+  //   outline: none;
+  // }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 7px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: linear-gradient(90deg, $soft-cyan 60%, $light-grayish-blue-empty 60%);
+    border-radius: 4px;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    height: 37px;
+    width: 37px;
+    border-radius: 50%;
+    background: $strong-cyan url('images/icon-slider.svg') no-repeat center;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -17px;
+    box-shadow: 0px 18px 28px 0px $strong-cyan;
+  }
+  input[type=range]:active::-webkit-slider-thumb {
+    background-color: $very-strong-cyan;
+  }
+  .price {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+  }
+  .dollar {
+    font-size: 2em;
+    font-weight: 900;
+    margin-right: 0.3em;
+  }
+  .per, .billing {
+    color: $grayish-blue;
+  }
+  
+  .discount {
+    visibility: hidden;
+  }
+ 
+  .toogle-form {
+    display: inline-block;
+  }
+  .toogle {
+    $toogle-width: 36px;
+    $toogle-height: $toogle-width / 2;
+    $toogle-radius: $toogle-height / 2;
+    $switch-gap: 6px;
+    $switch-offset: 6px / 2;
+    .toogle-background {
+      position: relative;
+      width: $toogle-width;
+      height: $toogle-height;
+      background-color: $grayish-blue;
+      margin-inline: 0.7em;
+      border-radius: $toogle-radius;
+      transition: 0.3s background;
+    }
+    .toogle-checkbox {
+      display: none;
+    }
+    .toogle-checkbox:checked + .toogle-background{
+      background-color: $strong-cyan;      
+    }
+    .toogle-background::before {
+      content: "";
+      position: absolute;
+      width: $toogle-height - $switch-gap;
+      height: $toogle-height - $switch-gap;
+      background-color: $white;
+      border-radius: 50%;
+      margin: $switch-offset;
+      transition: 0.3s ease-in-out;
+    }
+    .toogle-checkbox:checked + .toogle-background::before{
+      transform: translateX($toogle-width / 2);      
+    }
+  }
+  .billing {
+    @include centering(row);
+    font-size: clamp(0.6em, 1.5vw, 0.8em);
+    margin-left: 15%;
+    margin-bottom: 3em;
+    .percentage {
+      display: inline-block;
+      background-color: $translucent-light-red;
+      padding: 0.1em 0.3em;
+      border-radius: 0.5em;
+      color: $light-red;
+      font-weight: 900;
+      margin-left: 0.5em;
+    }
+  }
+.assurances {
+  @include centering(column); 
+  color: $grayish-blue;
+  margin-bottom: 2em;
+  .check-tick {
+    margin-right: 0.8em; 
+  }
+}
+.start-trial-button {
+  color: $white;
+  background-color: $dark-desaturated-blue;
+  padding: 0.7em;
+  width: 55%;
+  border: 0;
+  border-radius: 0.8em;
+  margin-bottom: 2em;
+  cursor: pointer;
+}
+footer {
+  margin-top: 2em;
+}
+
+
+  
