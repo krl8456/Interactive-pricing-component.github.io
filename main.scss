@@ -24,16 +24,23 @@ html, body, h1, h2, h3, h4 {
     padding: 0;
 }
 html, body {
+  @include centering(column);
     width: 100%;
     overflow-x: hidden;
-    @include centering(column);
     font-size: $font-size;
     font-family: 'Manrope', sans-serif;
-    background: url('images/pattern-circles.svg') no-repeat center 5em;
+    background: url('images/bg-pattern.svg') no-repeat center 0;
+    background-size: 100% 50%;
+}
+.circles {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 #main-header {
     @include centering(column);
-    margin-top: 6em;
+    margin-top: 8em;
 }
 h1 {
   font-size: clamp(1em, 3vw, 1.3em);
@@ -42,6 +49,9 @@ h2, h3 {
     font-size: clamp(0.7em, 2vw, 1em);
     color: $grayish-blue;
 }
+h1, h2 {
+  z-index: 2;
+}
 h3 {
     font-size: 0.8em;
     text-align: center;
@@ -49,6 +59,7 @@ h3 {
     text-transform:uppercase;
 }
 main {
+  position: relative;
     background: $white;
     border-radius: 0.5em;
     @include centering(column);
@@ -101,7 +112,7 @@ input[type=range] {
   }
   
   .discount {
-    visibility: hidden;
+    display: none;
   }
  
   .toogle-form {
@@ -175,8 +186,47 @@ input[type=range] {
   margin-bottom: 2em;
   cursor: pointer;
 }
+.wrapper {
+  @include centering(column); 
+  width: 100%;
+}
 footer {
   margin-top: 2em;
+}
+@media (min-width: 700px) {
+  #container {
+    width: 45%;
+  }
+  .price {
+    position: absolute;
+    top: 10%;
+    left: 70%;
+  }
+  h3 {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+  }
+  #main-content {
+    padding-top: 5em;
+  }
+  #range {
+    margin-bottom: 2em;
+  }
+  .discount {
+    display: inline;
+  }
+  .wrapper {
+    @include centering(row); 
+  }
+  .assurances {
+    align-items: flex-start;
+    margin-left: -5%;
+  }
+  .start-trial-button {
+    width: 30%;
+    margin-left: 20%;
+  }
 }
 
 
