@@ -6,7 +6,9 @@ const dollar = document.querySelector('.dollar')
 const toggle = document.querySelector('.toogle')
 const pageViewsTxt = document.querySelector('.pageviews')
 const toogleBackground = document.querySelector('.toogle-background')
+const toogle = document.querySelector('.toogle')
 const per = document.querySelector('.per')
+const toogleCheckbox = document.querySelector('.toogle-checkbox')
 
 
 dollar.textContent = '$' + perMonthValues[slider.value] + '.00'
@@ -32,13 +34,34 @@ slider.addEventListener('input', () => {
     const color = `linear-gradient(90deg, hsl(174, 77%, 80%) ${value}%, hsl(224, 65%, 95%)${value}%)`
     slider.style.background = color
 })
-// toogle.addEventListener('click', () => {
-//     if (toogleBackground.style.backgroundColor === 'hsl(225, 20%, 60%)') {
-//         dollar.textContent = '$' + perYearValues[this.value] + '.00'
-//         per.textContent = '/year'
-//     }
-//     else {
-//         dollar.textContent = '$' + perMonthValues[this.value] + '.00'
-//         per.textContent = '/month'
-//     }
-// })
+toogle.addEventListener('click', () => {
+    if(!toogleCheckbox.checked) {
+        dollar.textContent = '$' + perMonthValues[slider.value] + '.00'
+        per.textContent = '/month'
+        slider.oninput = function() {
+            dollar.textContent = '$' + perMonthValues[this.value] + '.00'
+            per.textContent = '/month'
+            if (pageViews[slider.value] === 1) {
+                pageViewsTxt.textContent = pageViews[this.value] + 'M PAGEVIEWS'
+            }
+            else {
+                pageViewsTxt.textContent = pageViews[this.value] + 'K PAGEVIEWS'
+            }
+        }
+    }
+    else {
+        dollar.textContent = '$' + perYearValues[slider.value] + '.00'
+        per.textContent = '/year'
+        slider.oninput = function() {
+        dollar.textContent = '$' + perYearValues[this.value] + '.00'
+        per.textContent = '/year'
+        if (pageViews[slider.value] === 1) {
+            pageViewsTxt.textContent = pageViews[this.value] + 'M PAGEVIEWS'
+        }
+        else {
+            pageViewsTxt.textContent = pageViews[this.value] + 'K PAGEVIEWS'
+        }
+    }
+    }
+              
+})

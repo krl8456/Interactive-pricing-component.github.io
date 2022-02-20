@@ -68,6 +68,7 @@ h3 {
   text-align: center;
   margin-top: 1em;
   text-transform: uppercase;
+  margin-bottom: 2em;
 }
 
 main {
@@ -130,6 +131,7 @@ input[type=range]:active::-webkit-slider-thumb {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 1em;
+  margin-top: 2em;
 }
 
 .dollar {
@@ -282,12 +284,17 @@ footer {
   .price {
     position: absolute;
     top: 10%;
-    left: 70%;
+    right: 10%;
+    margin-top: 0;
   }
   h3 {
     position: absolute;
     top: 10%;
     left: 5%;
+    margin-bottom: 0;
+  }
+  h2 {
+    font-size: clamp(0.8em, 1.2vw, 1.2em);
   }
   #main-content {
     padding-top: 5em;
@@ -317,7 +324,7 @@ footer {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
-    margin-left: -5%;
+    font-size: clamp(0.7em, 1vw, 1.2em);
   }
   .start-trial-button {
     width: 30%;
