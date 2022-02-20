@@ -12,56 +12,40 @@ const toogleCheckbox = document.querySelector('.toogle-checkbox')
 
 
 dollar.textContent = '$' + perMonthValues[slider.value] + '.00'
-if (pageViews[slider.value] === 1) {
-    pageViewsTxt.textContent = pageViews[slider.value] + 'M PAGEVIEWS'
-}
-else {
-    pageViewsTxt.textContent = pageViews[slider.value] + 'K PAGEVIEWS'
-}
+pageViewsContent(slider)
 
 
 slider.oninput = function() {
     dollar.textContent = '$' + perMonthValues[this.value] + '.00';
-    if (pageViews[slider.value] === 1) {
-        pageViewsTxt.textContent = pageViews[this.value] + 'M PAGEVIEWS'
-    }
-    else {
-        pageViewsTxt.textContent = pageViews[this.value] + 'K PAGEVIEWS'
-    }
+    pageViewsContent(this)
 }
 slider.addEventListener('input', () => {
-    const value = slider.value * 25;
+    const value = slider.value * 25
     const color = `linear-gradient(90deg, hsl(174, 77%, 80%) ${value}%, hsl(224, 65%, 95%)${value}%)`
     slider.style.background = color
 })
 toogle.addEventListener('click', () => {
     if(!toogleCheckbox.checked) {
-        dollar.textContent = '$' + perMonthValues[slider.value] + '.00'
-        per.textContent = '/month'
-        slider.oninput = function() {
-            dollar.textContent = '$' + perMonthValues[this.value] + '.00'
-            per.textContent = '/month'
-            if (pageViews[slider.value] === 1) {
-                pageViewsTxt.textContent = pageViews[this.value] + 'M PAGEVIEWS'
-            }
-            else {
-                pageViewsTxt.textContent = pageViews[this.value] + 'K PAGEVIEWS'
-            }
-        }
+       sliderOnClick(perMonthValues, '/month')
     }
     else {
-        dollar.textContent = '$' + perYearValues[slider.value] + '.00'
-        per.textContent = '/year'
-        slider.oninput = function() {
-        dollar.textContent = '$' + perYearValues[this.value] + '.00'
-        per.textContent = '/year'
-        if (pageViews[slider.value] === 1) {
-            pageViewsTxt.textContent = pageViews[this.value] + 'M PAGEVIEWS'
-        }
-        else {
-            pageViewsTxt.textContent = pageViews[this.value] + 'K PAGEVIEWS'
-        }
-    }
-    }
-              
+        sliderOnClick(perYearValues, '/year')
+    }             
 })
+function pageViewsContent(context) {
+    if (pageViews[slider.value] === 1) {
+        pageViewsTxt.textContent = pageViews[context.value] + 'M PAGEVIEWS'
+    }
+    else {
+        pageViewsTxt.textContent = pageViews[context.value] + 'K PAGEVIEWS'
+    }
+}
+function sliderOnClick(values, text) {
+    dollar.textContent = '$' + values[slider.value] + '.00'
+        per.textContent = text
+        slider.oninput = function() {
+            dollar.textContent = '$' + values[this.value] + '.00'
+            per.textContent = text
+            pageViewsContent(this)
+        }   
+}
