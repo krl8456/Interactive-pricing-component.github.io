@@ -1,5 +1,5 @@
 const perMonthValues = [8, 12, 16, 24, 36]
-const perYearValues = [72, 108, 144, 216, 324]
+const perYearValues = []
 const pageViews = [10, 50, 100, 500, 1]
 const slider = document.querySelector('#range')
 const dollar = document.querySelector('.dollar')
@@ -9,7 +9,9 @@ const toogleBackground = document.querySelector('.toogle-background')
 const toogle = document.querySelector('.toogle')
 const per = document.querySelector('.per')
 const toogleCheckbox = document.querySelector('.toogle-checkbox')
-
+for(el of perMonthValues) {
+    perYearValues.push(el * 0.75)
+}
 
 dollar.textContent = '$' + perMonthValues[slider.value] + '.00'
 pageViewsContent(slider)
@@ -26,10 +28,10 @@ slider.addEventListener('input', () => {
 })
 toogle.addEventListener('click', () => {
     if(!toogleCheckbox.checked) {
-       sliderOnClick(perMonthValues, '/month')
+       sliderOnClick(perMonthValues)
     }
     else {
-        sliderOnClick(perYearValues, '/year')
+        sliderOnClick(perYearValues)
     }             
 })
 function pageViewsContent(context) {
@@ -40,12 +42,12 @@ function pageViewsContent(context) {
         pageViewsTxt.textContent = pageViews[context.value] + 'K PAGEVIEWS'
     }
 }
-function sliderOnClick(values, text) {
+function sliderOnClick(values) {
     dollar.textContent = '$' + values[slider.value] + '.00'
-        per.textContent = text
+        per.textContent = '/month'
         slider.oninput = function() {
             dollar.textContent = '$' + values[this.value] + '.00'
-            per.textContent = text
+            per.textContent = '/month'
             pageViewsContent(this)
         }   
 }

@@ -34,13 +34,13 @@ html, body {
 }
 .circles {
   position: fixed;
-  top: 20%;
+  top: 18%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 #main-header {
     @include centering(column);
-    margin-top: 8em;
+    margin-top: 12vh;
 }
 h1 {
   font-size: clamp(1.4em, 3vw, 2.3em);
@@ -66,7 +66,7 @@ main {
     @include centering(column);
     width: 100%;
     margin-top: 7em;
-    box-shadow: 0px 12px 18px 1px rgba(0,0,0,0.37);
+    box-shadow: 0px 2px 7px 1px rgba(0,0,0,0.1);
 }
 input[type=range] {
     height: 45px;
@@ -179,7 +179,7 @@ input[type=range] {
   padding: 0.7em;
   width: 55%;
   border: 0;
-  border-radius: 0.8em;
+  border-radius: 1em;
   margin-bottom: 2em;
   cursor: pointer;
 }
@@ -192,9 +192,6 @@ footer {
   text-align: center;
 }
 @media (min-width: 700px) {
-  #container {
-    width: 45%;
-  }
   .price {
     position: absolute;
     top: 10%;
@@ -204,7 +201,7 @@ footer {
   h3 {
     position: absolute;
     top: 10%;
-    left: 5%;
+    left: 9%;
     margin-bottom: 0;
   }
   h2 {
@@ -212,9 +209,13 @@ footer {
   }
   #main-content {
     padding-top: 5em;
+    width: 30em;
+    height: 18em;
+    margin-inline: auto;
   }
   #range {
-    margin-bottom: 2em;
+    margin-top: -3em;
+    margin-bottom: 3em;
   }
   .discount {
     display: inline;
@@ -224,9 +225,10 @@ footer {
   }
   .assurances {
     align-items: flex-start;
-    font-size: clamp(0.7em, 1vw, 1.2em);
+    margin-bottom: -2em;
   }
   .start-trial-button {
+    margin-bottom: -2em;
     width: 30%;
     margin-left: 20%;
   }
